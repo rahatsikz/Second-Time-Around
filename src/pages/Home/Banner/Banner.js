@@ -36,12 +36,12 @@ const Banner = () => {
               >
                 <div className="hero-overlay bg-opacity-70"></div>
                 <div className="hero-content text-center text-neutral-content">
-                  <div className="">
+                  <div>
                     <h1 className="mb-5 text-5xl font-bold max-w-3xl">
                       Experience the Best Deals Used Mobile and Tablets
                     </h1>
                     <p className="mb-5 max-w-xl mx-auto">
-                      we believe everyone should have access to the latest
+                      We believe everyone should have access to the latest
                       technology to stay connected. That's why we strive to
                       provide the highest-quality used mobile phones and tablets
                       at the best prices.
@@ -59,7 +59,7 @@ const Banner = () => {
               >
                 <div className="hero-overlay bg-opacity-70"></div>
                 <div className="hero-content text-center text-neutral-content">
-                  <div className="">
+                  <div>
                     <h1 className="mb-5 text-5xl font-bold max-w-3xl">
                       Shop with Us and Get the Tech You Deserve
                     </h1>

@@ -5,8 +5,8 @@ const UserReview = () => {
   const reviews = [
     {
       id: 1,
-      name: "James Vince",
-      location: "New York",
+      name: "Hujaifa Ahnaf",
+      location: "Gulshan",
       photo:
         "https://images.pexels.com/photos/4691234/pexels-photo-4691234.jpeg?auto=compress&cs=tinysrgb&w=640&h=750&dpr=1",
       description:
@@ -14,8 +14,8 @@ const UserReview = () => {
     },
     {
       id: 2,
-      name: "Kevin Spencer",
-      location: "Boston",
+      name: "Rubayet Kamal",
+      location: "Mirpur",
       photo:
         "https://images.pexels.com/photos/4827572/pexels-photo-4827572.jpeg?auto=compress&cs=tinysrgb&w=640&h=750&dpr=1",
       description:

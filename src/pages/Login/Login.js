@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+import axios from "axios";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, googleLogin } = useContext(AuthContext);
+  const [errormsg, setErrormsg] = useState("");
+
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -12,6 +15,7 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    setErrormsg("");
 
     // console.log(email, password);
     login(email, password)
@@ -20,7 +24,36 @@ const Login = () => {
         console.log(user);
         navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setErrormsg(error.message);
+      });
+  };
+  const handleGoogle = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        axios
+          .post("http://localhost:5000/users", {
+            name: user.displayName,
+            email: user.email,
+            role: "Buyer",
+          })
+          .then(
+            (response) => {
+              console.log(response);
+              navigate(from, { replace: true });
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+      })
+      .catch((error) => {
+        console.error(error);
+        setErrormsg(error.message);
+      });
   };
   return (
     <section>
@@ -70,9 +103,13 @@ const Login = () => {
                   </button>
                 </div>
               </form>
+              {errormsg && (
+                <p className="text-error text-center my-4"> {errormsg} </p>
+              )}
               <div className="divider my-8">OR</div>
               <div className="mt-10">
                 <button
+                  onClick={handleGoogle}
                   className="bg-white border text-gray-700 p-4 w-full rounded-full tracking-wide
                                 font-semibold font-display focus:outline-none focus:shadow-outline hover:text-teal-600
                                 shadow-lg flex items-center justify-center"

@@ -2,6 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(email, password);
+  };
   return (
     <section>
       <div className="lg:flex">
@@ -14,7 +22,7 @@ const Login = () => {
               Sign in
             </h2>
             <div className="mt-12">
-              <form>
+              <form onSubmit={handleLogin}>
                 <div>
                   <div className="text-sm font-bold text-gray-700 tracking-wide">
                     Email Address
@@ -41,6 +49,7 @@ const Login = () => {
                 </div>
                 <div className="mt-10">
                   <button
+                    type="submit"
                     className="bg-teal-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                                 font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-teal-600
                                 shadow-lg"

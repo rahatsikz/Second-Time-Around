@@ -3,6 +3,16 @@ import { Link } from "react-router-dom";
 import "./Register.css";
 
 const Register = () => {
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const fullName = form.fName.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const role = form.role.value;
+
+    console.log(fullName, email, password, role);
+  };
   return (
     <section>
       <div className="lg:flex">
@@ -173,14 +183,14 @@ const Register = () => {
               Sign Up
             </h2>
             <div className="mt-12">
-              <form>
+              <form onSubmit={handleRegister}>
                 <div>
                   <div className="text-sm font-bold text-gray-700 tracking-wide">
                     Full Name
                   </div>
                   <input
                     className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-teal-500"
-                    type="email"
+                    type="text"
                     name="fName"
                     placeholder="Enter your name"
                   />

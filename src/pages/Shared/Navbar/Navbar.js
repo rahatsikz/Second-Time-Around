@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
   return (
     <div>
       <header className="border-b-1 relative z-20 w-full border-b border-slate-200 bg-white/90 shadow-lg shadow-slate-700/5 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden">
@@ -97,17 +105,7 @@ const Navbar = () => {
                   <span>Blog</span>
                 </NavLink>
               </li>
-              <li role="none" className="flex items-stretch">
-                <NavLink
-                  role="menuitem"
-                  aria-haspopup="false"
-                  tabIndex="0"
-                  className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-teal-500 focus:bg-teal-50 focus:outline-none focus-visible:outline-none lg:px-8"
-                  to="/login"
-                >
-                  <span>Login</span>
-                </NavLink>
-              </li>
+
               <li role="none" className="flex items-stretch">
                 <NavLink
                   role="menuitem"
@@ -119,6 +117,34 @@ const Navbar = () => {
                   <span>Dashboard</span>
                 </NavLink>
               </li>
+
+              {user?.uid ? (
+                <li role="none" className="flex items-stretch">
+                  <button
+                    role="menuitem"
+                    aria-haspopup="false"
+                    tabIndex="0"
+                    onClick={handleLogOut}
+                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-teal-500 focus:bg-teal-50 focus:outline-none focus-visible:outline-none lg:px-8"
+                  >
+                    <span>Log Out</span>
+                  </button>
+                </li>
+              ) : (
+                <>
+                  <li role="none" className="flex items-stretch">
+                    <NavLink
+                      role="menuitem"
+                      aria-haspopup="false"
+                      tabIndex="0"
+                      className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-teal-500 focus:bg-teal-50 focus:outline-none focus-visible:outline-none lg:px-8"
+                      to="/login"
+                    >
+                      <span>Login</span>
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </nav>
         </div>

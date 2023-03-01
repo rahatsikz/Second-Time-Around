@@ -1,8 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useContext, useState } from "react";
+import { toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 import "./Register.css";
 
 const Register = () => {
+  const { createUser, profileInfo } = useContext(AuthContext);
+  const [errormsg, setErrormsg] = useState("");
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -11,7 +17,41 @@ const Register = () => {
     const password = form.password.value;
     const role = form.role.value;
 
-    console.log(fullName, email, password, role);
+    setErrormsg("");
+
+    // console.log(fullName, email, password, role);
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        const profile = {
+          displayName: fullName,
+        };
+        profileInfo(profile)
+          .then(() => {
+            axios
+              .post("http://localhost:5000/users", {
+                name: fullName,
+                email: email,
+                role: role,
+              })
+              .then(
+                (response) => {
+                  console.log(response);
+                  toast.success("Account Created Successfully");
+                  navigate("/");
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
+          })
+          .catch((err) => console.error(err));
+      })
+      .catch((error) => {
+        console.error(error);
+        setErrormsg(error.message);
+      });
   };
   return (
     <section>
@@ -245,6 +285,9 @@ const Register = () => {
                   </button>
                 </div>
               </form>
+              {errormsg && (
+                <p className="text-error text-center my-4"> {errormsg} </p>
+              )}
               <div className="mt-12 mb-8 text-sm font-display font-semibold text-gray-700 text-center">
                 Already have an account ? &nbsp;
                 <Link

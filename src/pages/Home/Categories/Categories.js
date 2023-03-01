@@ -16,7 +16,7 @@ const Categories = () => {
     {
       id: 3,
       name: "KaiOS",
-      icon: "https://i.ibb.co/NpDCxbm/kaios.png",
+      icon: "https://i.ibb.co/qmLW8xf/kaios.png",
     },
   ];
   return (

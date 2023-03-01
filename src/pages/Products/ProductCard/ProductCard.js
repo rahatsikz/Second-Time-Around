@@ -2,6 +2,7 @@ import React from "react";
 import { HiCheckCircle } from "react-icons/hi";
 import { MdLocationOn } from "react-icons/md";
 import { TbCurrencyTaka } from "react-icons/tb";
+import PurchaseModal from "../PurchaseModal/PurchaseModal";
 
 const ProductCard = ({ product }) => {
   const {
@@ -15,6 +16,7 @@ const ProductCard = ({ product }) => {
     productCondition,
     orginalPrice,
     resalePrice,
+    _id,
   } = product;
   return (
     <section>
@@ -69,11 +71,15 @@ const ProductCard = ({ product }) => {
             </span>
             <TbCurrencyTaka />
           </p>
-          <button className="inline-flex items-center mt-8 justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-teal-500 hover:bg-teal-600 focus:bg-teal-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-teal-300 disabled:bg-teal-300 disabled:shadow-none">
+          <label
+            htmlFor={_id}
+            className="btn btn-xs border-0 inline-flex items-center mt-8 justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-teal-500 hover:bg-teal-600 focus:bg-teal-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-teal-300 disabled:bg-teal-300 disabled:shadow-none"
+          >
             <span>Purchase Now</span>
-          </button>
+          </label>
         </div>
       </div>
+      <PurchaseModal product={product}></PurchaseModal>
     </section>
   );
 };

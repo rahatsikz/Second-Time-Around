@@ -27,9 +27,7 @@ const SingleReview = ({ rev }) => {
                 </div>
                 <div className="flex flex-col gap-1 text-center">
                   <span className="font-bold uppercase"> {name} </span>
-                  <cite className="not-italic">
-                    <a href="http://www.microsoft.com"> {location} </a>
-                  </cite>
+                  <cite className="not-italic">{location}</cite>
                 </div>
               </div>
             </figcaption>

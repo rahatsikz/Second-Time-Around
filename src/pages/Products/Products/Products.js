@@ -8,7 +8,7 @@ const Products = () => {
     <section className="container mx-auto">
       <div className="my-12">
         <h2 className="text-3xl font-semibold text-teal-500 text-center">
-          {categorizedProduct[0].category} Devices
+          {categorizedProduct[0]?.category} Devices
         </h2>
         <p className="text-lg text-center mt-2 max-w-sm mx-auto">
           Best Second hand devices you can get are here. Just Choose Wisely

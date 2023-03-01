@@ -31,7 +31,7 @@ const Banner = () => {
               <div
                 className="hero h-[70vh]"
                 style={{
-                  backgroundImage: `url("https://pixabay.com/get/g02b868570dc91220dd3fa9f56ff2fa12205dd0096d6f8a013ebe0dd0926eaed4016ae785dc7ab4284863cc6f4c5dd89b06a3080287066b128e6d85d143ea3c754a8f8598aa21896581f59231ed1820df_1920.jpg")`,
+                  backgroundImage: `url("https://images.pexels.com/photos/196656/pexels-photo-196656.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
                 }}
               >
                 <div className="hero-overlay bg-opacity-70"></div>
@@ -54,7 +54,7 @@ const Banner = () => {
               <div
                 className="hero h-[70vh]"
                 style={{
-                  backgroundImage: `url("https://pixabay.com/get/gc3fb106ba3c2dd708fac57411c546f3ab46acf783bdeab0b016f22e789591ba92f429b6c46e4261c510245c65cf63c1508d8f7e6fbe2214cf2451e439c6348192409a783d3a3c2d738e6c83cd768b8c7_1920.jpg")`,
+                  backgroundImage: `url("https://images.pexels.com/photos/1693628/pexels-photo-1693628.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")`,
                 }}
               >
                 <div className="hero-overlay bg-opacity-70"></div>

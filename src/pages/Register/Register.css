@@ -1,0 +1,7 @@
+input:-webkit-autofill {
+  -webkit-background-clip: text;
+}
+.cus-border {
+  border-bottom: 1px solid #d1d5db;
+  border-radius: 0;
+}

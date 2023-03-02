@@ -30,23 +30,23 @@ const PurchaseModal = ({ items, handleClose, refetch }) => {
       .then(
         (response) => {
           console.log(response);
+          toast.success("Order has been placed successfully");
+          handleClose();
         },
         (error) => {
           console.log(error);
         }
       );
 
-    axios
-      .put(`http://localhost:5000/productstate/?id=${_id}`, {
-        purchaseStatus: true,
-      })
-      .then((response) => {
-        console.log(response);
-        toast.success("Order has been placed successfully");
-        handleClose();
-        refetch();
-      })
-      .catch((error) => console.error(error));
+    // axios
+    //   .put(`http://localhost:5000/productstate/?id=${_id}`, {
+    //     purchaseStatus: true,
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //     refetch();
+    //   })
+    //   .catch((error) => console.error(error));
   };
   return (
     <div>

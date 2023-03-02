@@ -2,17 +2,21 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
+import Loader from "../pages/Shared/Loader/Loader";
 import Navbar from "../pages/Shared/Navbar/Navbar";
 
 const DashLayout = () => {
   const { user } = useContext(AuthContext);
-  const { data: userrole = [] } = useQuery({
+  const { data: userrole = [], isLoading } = useQuery({
     queryKey: ["userrole", user?.email],
     queryFn: () =>
       fetch(`http://localhost:5000/users?email=${user?.email}`).then((res) =>
         res.json()
       ),
   });
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
   console.log(userrole);
   return (
     <div>
@@ -29,7 +33,7 @@ const DashLayout = () => {
               <li>
                 <Link
                   to="/dashboard/myorders"
-                  className="text-lg font-semibold"
+                  className="text-lg font-semibold active:bg-teal-500"
                 >
                   My Orders
                 </Link>

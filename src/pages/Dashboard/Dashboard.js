@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <div className="h-96 flex justify-center items-center">
       <h2 className="text-center text-lg font-semibold">
-        Hey... <span className="text-teal-600">{user.displayName}</span> <br />{" "}
+        Hey... <span className="text-teal-600">{user?.displayName}</span> <br />{" "}
         Welcome to Dashboard
       </h2>
     </div>

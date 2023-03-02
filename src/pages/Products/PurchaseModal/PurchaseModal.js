@@ -52,8 +52,14 @@ const PurchaseModal = ({ items, handleClose, refetch }) => {
     <div>
       <input type="checkbox" id={_id} className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box bg-base-200">
-          <h4 className="text-lg text-center font-semibold mb-4">
+        <div className="modal-box relative bg-base-200">
+          <label
+            htmlFor={_id}
+            className="btn btn-sm btn-circle absolute right-2 top-2"
+          >
+            ✕
+          </label>
+          <h4 className="text-lg text-center font-semibold my-4">
             Purchase Detail
           </h4>
           <form onSubmit={handlePurchase} className="grid grid-cols-1 gap-4">

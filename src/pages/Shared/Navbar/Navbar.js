@@ -45,33 +45,41 @@ const Navbar = () => {
               </svg>
             </Link>
             {/*      <!-- Mobile trigger --> */}
-            <button
-              className={`relative order-10 block h-10 w-10 self-center lg:hidden
+            <div className="flex items-center">
+              <button
+                className={`relative order-10 block h-10 w-10 self-center lg:hidden
                 ${
                   isToggleOpen
                     ? "visible opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(3)]:w-0 [&_span:nth-child(2)]:-rotate-45 "
                     : ""
                 }
               `}
-              onClick={() => setIsToggleOpen(!isToggleOpen)}
-              aria-expanded={isToggleOpen ? "true" : "false"}
-              aria-label="Toggle navigation"
-            >
-              <div className="absolute top-1/2 left-1/2 w-6 -translate-x-1/2 -translate-y-1/2 transform">
-                <span
-                  aria-hidden="true"
-                  className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
-                ></span>
-                <span
-                  aria-hidden="true"
-                  className="absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300"
-                ></span>
-                <span
-                  aria-hidden="true"
-                  className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
-                ></span>
-              </div>
-            </button>
+                onClick={() => setIsToggleOpen(!isToggleOpen)}
+                aria-expanded={isToggleOpen ? "true" : "false"}
+                aria-label="Toggle navigation"
+              >
+                <div className="absolute top-1/2 left-1/2 w-6 -translate-x-1/2 -translate-y-1/2 transform">
+                  <span
+                    aria-hidden="true"
+                    className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
+                  ></span>
+                  <span
+                    aria-hidden="true"
+                    className="absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300"
+                  ></span>
+                  <span
+                    aria-hidden="true"
+                    className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
+                  ></span>
+                </div>
+              </button>
+              <label
+                htmlFor="orderDrawer"
+                className="btn border-0 bg-teal-500 hover:bg-teal-700 px-6 drawer-button mr-8 lg:hidden"
+              >
+                Open Sidebar
+              </label>
+            </div>
             {/*      <!-- Navigation links --> */}
             <ul
               role="menubar"
@@ -106,30 +114,31 @@ const Navbar = () => {
                 </NavLink>
               </li>
 
-              <li role="none" className="flex items-stretch">
-                <NavLink
-                  role="menuitem"
-                  aria-haspopup="false"
-                  tabIndex="0"
-                  className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-teal-500 focus:bg-teal-50 focus:outline-none focus-visible:outline-none lg:px-8"
-                  to="/dashboard"
-                >
-                  <span>Dashboard</span>
-                </NavLink>
-              </li>
-
               {user?.uid ? (
-                <li role="none" className="flex items-stretch">
-                  <button
-                    role="menuitem"
-                    aria-haspopup="false"
-                    tabIndex="0"
-                    onClick={handleLogOut}
-                    className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-teal-500 focus:bg-teal-50 focus:outline-none focus-visible:outline-none lg:px-8"
-                  >
-                    <span>Log Out</span>
-                  </button>
-                </li>
+                <>
+                  <li role="none" className="flex items-stretch">
+                    <NavLink
+                      role="menuitem"
+                      aria-haspopup="false"
+                      tabIndex="0"
+                      className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-teal-500 focus:bg-teal-50 focus:outline-none focus-visible:outline-none lg:px-8"
+                      to="/dashboard"
+                    >
+                      <span>Dashboard</span>
+                    </NavLink>
+                  </li>
+                  <li role="none" className="flex items-stretch">
+                    <button
+                      role="menuitem"
+                      aria-haspopup="false"
+                      tabIndex="0"
+                      onClick={handleLogOut}
+                      className="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-teal-500 focus:bg-teal-50 focus:outline-none focus-visible:outline-none lg:px-8"
+                    >
+                      <span>Log Out</span>
+                    </button>
+                  </li>
+                </>
               ) : (
                 <>
                   <li role="none" className="flex items-stretch">

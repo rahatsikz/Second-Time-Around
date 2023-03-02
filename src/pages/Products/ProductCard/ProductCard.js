@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { HiCheckCircle } from "react-icons/hi";
 import { MdLocationOn } from "react-icons/md";
 import { TbCurrencyTaka } from "react-icons/tb";
 import PurchaseModal from "../PurchaseModal/PurchaseModal";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, refetch }) => {
+  const [items, setItems] = useState(product);
+  const handleClose = () => {
+    setItems(null);
+  };
+
   const {
     picture,
     name,
@@ -73,13 +78,19 @@ const ProductCard = ({ product }) => {
           </p>
           <label
             htmlFor={_id}
-            className="btn btn-xs border-0 inline-flex items-center mt-8 justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-teal-500 hover:bg-teal-600 focus:bg-teal-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-teal-300 disabled:bg-teal-300 disabled:shadow-none"
+            className="btn btn-xs border-0 inline-flex items-center mt-8 justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded whitespace-nowrap bg-teal-500 hover:bg-teal-600 focus:bg-teal-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-teal-300 disabled:bg-gray-300 disabled:shadow-none"
           >
             <span>Purchase Now</span>
           </label>
         </div>
       </div>
-      <PurchaseModal product={product}></PurchaseModal>
+      {items && (
+        <PurchaseModal
+          items={items}
+          handleClose={handleClose}
+          refetch={refetch}
+        ></PurchaseModal>
+      )}
     </section>
   );
 };

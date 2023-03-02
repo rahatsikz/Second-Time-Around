@@ -24,8 +24,6 @@ export const router = createBrowserRouter([
             <Products></Products>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "blog",

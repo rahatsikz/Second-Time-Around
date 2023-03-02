@@ -1,9 +1,27 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Loader from "../../Shared/Loader/Loader";
 import ProductCard from "../ProductCard/ProductCard";
 
 const Products = () => {
-  const categorizedProduct = useLoaderData();
+  // const categorizedProduct = useLoaderData();
+  const { id } = useParams();
+
+  const {
+    data: categorizedProduct = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["categorizedProduct"],
+    queryFn: () =>
+      fetch(`http://localhost:5000/products/${id}`).then((res) => res.json()),
+  });
+
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
+
   return (
     <section className="container mx-auto">
       <div className="my-12">
@@ -16,7 +34,11 @@ const Products = () => {
       </div>
       <div className="grid xl:grid-cols-2 gap-12 mb-12 xl:w-5/6 mx-auto">
         {categorizedProduct.map((product) => (
-          <ProductCard key={product._id} product={product}></ProductCard>
+          <ProductCard
+            key={product._id}
+            product={product}
+            refetch={refetch}
+          ></ProductCard>
         ))}
       </div>
     </section>

@@ -1,3 +1,4 @@
+import { format, parseISO } from "date-fns";
 import React, { useState } from "react";
 import { HiCheckCircle } from "react-icons/hi";
 import { MdLocationOn } from "react-icons/md";
@@ -23,6 +24,8 @@ const ProductCard = ({ product, refetch }) => {
     resalePrice,
     _id,
   } = product;
+  const time = format(parseISO(timeOfSellPost), "PP");
+  console.log(time);
   return (
     <section>
       <div className="flex flex-col items-center overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">
@@ -48,7 +51,8 @@ const ProductCard = ({ product, refetch }) => {
                 )}
               </p>
               <p className="text-sm text-slate-400">
-                on {timeOfSellPost.slice(0, 15)}
+                {/* on {timeOfSellPost.slice(0, 10)} */}
+                on {time}
               </p>
               <p className="flex items-center mt-2">
                 <span className="text-teal-600">

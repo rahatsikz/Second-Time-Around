@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashLayout from "../layouts/DashLayout";
 import Main from "../layouts/Main";
 import Blogs from "../pages/Blogs/Blogs";
+import AddProduct from "../pages/Dashboard/AddProduct/AddProduct";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import MyOrders from "../pages/Dashboard/MyOrders/MyOrders";
 import Payments from "../pages/Dashboard/Payments/Payments";
@@ -10,6 +11,7 @@ import Login from "../pages/Login/Login";
 import Products from "../pages/Products/Products/Products";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
+import UserRoute from "./UserRoute";
 
 export const router = createBrowserRouter([
   {
@@ -56,13 +58,25 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/myorders",
-        element: <MyOrders></MyOrders>,
+        element: (
+          <UserRoute>
+            <MyOrders></MyOrders>
+          </UserRoute>
+        ),
       },
       {
         path: "/dashboard/payment/:id",
-        element: <Payments></Payments>,
+        element: (
+          <UserRoute>
+            <Payments></Payments>
+          </UserRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/orders/${params.id}`),
+      },
+      {
+        path: "/dashboard/addproduct",
+        element: <AddProduct></AddProduct>,
       },
     ],
   },

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 const CheckoutForm = ({ orderData }) => {
-  const { price, buyer, email, _id, device } = orderData;
+  const { price, buyer, email, _id, device, Seller } = orderData;
 
   const stripe = useStripe();
   const elements = useElements();
@@ -76,6 +76,8 @@ const CheckoutForm = ({ orderData }) => {
     // console.log(paymentIntent);
     if (paymentIntent.status === "succeeded") {
       const payment = {
+        Seller,
+        buyer,
         email,
         device,
         price,

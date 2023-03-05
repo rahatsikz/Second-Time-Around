@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const PurchaseModal = ({ items, handleClose, refetch }) => {
-  const { name, resalePrice, _id, picture } = items;
+  const { name, resalePrice, _id, picture, Seller } = items;
   const { user } = useContext(AuthContext);
   const handlePurchase = (e) => {
     e.preventDefault();
@@ -19,6 +19,7 @@ const PurchaseModal = ({ items, handleClose, refetch }) => {
 
     axios
       .post("http://localhost:5000/orders", {
+        Seller,
         buyer,
         email,
         device,

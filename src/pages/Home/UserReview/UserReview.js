@@ -31,7 +31,7 @@ const UserReview = () => {
         We care about our user and get connected to know their experience in
         shopping with us
       </p>
-      <div className="grid lg:grid-cols-2 gap-8 mt-8">
+      <div className="grid xl:grid-cols-2 gap-8 mt-8">
         {reviews.map((rev) => (
           <SingleReview key={rev.id} rev={rev}></SingleReview>
         ))}

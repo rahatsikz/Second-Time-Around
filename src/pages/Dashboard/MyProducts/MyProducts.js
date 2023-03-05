@@ -42,7 +42,7 @@ const MyProducts = () => {
 
   return (
     <div>
-      <p className="text-xl font-bold md:text-center mb-8">My Products</p>
+      <p className="text-xl font-bold text-center mb-8">My Products</p>
       <div className="overflow-x-auto">
         <table className="table w-full">
           {/* head */}

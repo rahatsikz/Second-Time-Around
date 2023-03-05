@@ -1,30 +1,43 @@
-import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const MyBuyers = () => {
+  const { user } = useContext(AuthContext);
+  const { data: buyers = [] } = useQuery({
+    queryKey: ["buyers"],
+    queryFn: () =>
+      fetch(`http://localhost:5000/mybuyer?name=${user?.displayName}`).then(
+        (res) => res.json()
+      ),
+  });
   return (
     <div>
-      <p className="text-xl font-bold md:text-center mb-8">My Buyers</p>
+      <p className="text-xl font-bold text-center mb-8">My Buyers</p>
       <div className="overflow-x-auto">
         <table className="table w-full">
           {/* head */}
           <thead>
             <tr>
               <th></th>
-
-              <th>Product Name</th>
-              <th>Price</th>
-              <th>Paying Status</th>
+              <th>Sold Product</th>
+              <th>Buyer Name</th>
+              <th>Buyer Email</th>
+              <th>Buyer Location</th>
+              <th>Mobile Number</th>
             </tr>
           </thead>
           <tbody>
-            {/* {orders.map((order, idx) => (
-              <tr key={order._id}>
+            {buyers.map((buyer, idx) => (
+              <tr key={buyer._id}>
                 <th> {idx + 1} </th>
-
-                <td> {order.device} </td>
-                <td> {order.price} </td>
+                <td> {buyer.device} </td>
+                <td> {buyer.buyer} </td>
+                <td> {buyer.email} </td>
+                <td> {buyer.buyerLocation} </td>
+                <td> {buyer.contact} </td>
               </tr>
-            ))} */}
+            ))}
           </tbody>
         </table>
       </div>

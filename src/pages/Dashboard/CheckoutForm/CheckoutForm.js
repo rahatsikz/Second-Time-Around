@@ -4,7 +4,8 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 
 const CheckoutForm = ({ orderData }) => {
-  const { price, buyer, email, _id, device, Seller } = orderData;
+  const { price, buyer, email, _id, device, Seller, meetingLocation, contact } =
+    orderData;
 
   const stripe = useStripe();
   const elements = useElements();
@@ -81,6 +82,8 @@ const CheckoutForm = ({ orderData }) => {
         email,
         device,
         price,
+        contact,
+        buyerLocation: meetingLocation,
         transaction: paymentIntent.id,
         orderID: _id,
       };

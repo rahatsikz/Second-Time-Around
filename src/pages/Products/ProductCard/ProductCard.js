@@ -25,7 +25,7 @@ const ProductCard = ({ product, refetch }) => {
     _id,
   } = product;
   const time = format(parseISO(timeOfSellPost), "PP");
-  console.log(time);
+  // console.log(time);
   return (
     <section>
       <div className="flex flex-col items-center overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">

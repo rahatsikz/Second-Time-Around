@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSumbit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -61,6 +63,7 @@ const AddProduct = () => {
             .then((response) => {
               console.log(response);
               toast.success("Product added successfully");
+              navigate("/dashboard/myproducts");
             })
             .catch((error) => console.log(error));
           // console.log(add);

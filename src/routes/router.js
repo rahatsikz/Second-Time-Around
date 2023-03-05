@@ -12,6 +12,7 @@ import Login from "../pages/Login/Login";
 import Products from "../pages/Products/Products/Products";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
+import SellerRoute from "./SellerRoute";
 import UserRoute from "./UserRoute";
 
 export const router = createBrowserRouter([
@@ -77,11 +78,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/addproduct",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <SellerRoute>
+            <AddProduct></AddProduct>
+          </SellerRoute>
+        ),
       },
       {
         path: "/dashboard/myproducts",
-        element: <MyProducts></MyProducts>,
+        element: (
+          <SellerRoute>
+            <MyProducts></MyProducts>
+          </SellerRoute>
+        ),
       },
     ],
   },

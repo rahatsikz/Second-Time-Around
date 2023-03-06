@@ -1,5 +1,7 @@
+import axios from "axios";
 import { format, parseISO } from "date-fns";
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 import { HiCheckCircle } from "react-icons/hi";
 import { MdLocationOn } from "react-icons/md";
 import { TbCurrencyTaka } from "react-icons/tb";
@@ -26,6 +28,20 @@ const ProductCard = ({ product, refetch }) => {
   } = product;
   const time = format(parseISO(timeOfSellPost), "PP");
   // console.log(time);
+
+  const handleReport = (id) => {
+    // console.log(id);
+    axios
+      .put(`http://localhost:5000/products/${id}`, {
+        reported: true,
+      })
+      .then((response) => {
+        console.log(response);
+        toast.success("Reported to admin successfully");
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <section>
       <div className="flex flex-col items-center overflow-hidden bg-white rounded shadow-md text-slate-500 shadow-slate-200 sm:flex-row">
@@ -86,6 +102,13 @@ const ProductCard = ({ product, refetch }) => {
           >
             <span>Purchase Now</span>
           </label>
+          <br />
+          <button
+            onClick={() => handleReport(_id)}
+            className=" inline-flex h-10 items-center mt-2 justify-center gap-2 whitespace-nowrap rounded border border-red-500 px-5 text-sm font-medium tracking-wide text-red-500 transition duration-300 hover:border-red-600 hover:bg-red-600 hover:text-white focus:border-red-700  focus-visible:outline-none disabled:cursor-not-allowed disabled:border-red-300 disabled:text-red-300 disabled:shadow-none"
+          >
+            <span>Report to Admin</span>
+          </button>
         </div>
       </div>
       {items && (

@@ -2,14 +2,21 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const { login, googleLogin } = useContext(AuthContext);
   const [errormsg, setErrormsg] = useState("");
-
-  const location = useLocation();
+  const [loginUserEmail, setLoginUserEmail] = useState("");
+  const [token] = useToken(loginUserEmail);
   const navigate = useNavigate();
+  const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,7 +29,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, { replace: true });
+        setLoginUserEmail(user.email);
       })
       .catch((error) => {
         console.error(error);
@@ -34,6 +41,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setLoginUserEmail(user.email);
+
         axios
           .post("http://localhost:5000/users", {
             name: user.displayName,
@@ -43,7 +52,6 @@ const Login = () => {
           .then(
             (response) => {
               console.log(response);
-              navigate(from, { replace: true });
             },
             (error) => {
               console.log(error);

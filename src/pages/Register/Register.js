@@ -3,12 +3,21 @@ import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import useToken from "../../hooks/useToken";
 import "./Register.css";
 
 const Register = () => {
   const { createUser, profileInfo } = useContext(AuthContext);
   const [errormsg, setErrormsg] = useState("");
   const navigate = useNavigate();
+
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
+
+  if (token) {
+    navigate("/");
+  }
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -39,7 +48,7 @@ const Register = () => {
                 (response) => {
                   console.log(response);
                   toast.success("Account Created Successfully");
-                  navigate("/");
+                  setCreatedUserEmail(email);
                 },
                 (error) => {
                   console.log(error);

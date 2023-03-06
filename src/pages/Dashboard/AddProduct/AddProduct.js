@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
@@ -6,6 +7,17 @@ import { AuthContext } from "../../../context/AuthProvider";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
+
+  const { data: userrole = [] } = useQuery({
+    queryKey: ["userrole", user?.email],
+    queryFn: () =>
+      fetch(`http://localhost:5000/users?email=${user?.email}`).then((res) =>
+        res.json()
+      ),
+  });
+
+  // console.log(userrole);
+
   const navigate = useNavigate();
   const handleSumbit = (e) => {
     e.preventDefault();
@@ -40,6 +52,7 @@ const AddProduct = () => {
         console.log(data);
         if (data.success) {
           console.log(data.data.url);
+
           const add = {
             name: product,
             picture: data.data.url,
@@ -50,7 +63,7 @@ const AddProduct = () => {
             resalePrice: resalePrice,
             timeOfSellPost: date,
             Seller: user.displayName,
-            isSellerVerified: false,
+            isSellerVerified: userrole.verified ? true : false,
             location: location,
             productCondition: condition,
             isProductPurchased: false,

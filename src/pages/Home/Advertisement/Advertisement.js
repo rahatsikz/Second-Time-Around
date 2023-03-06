@@ -6,9 +6,11 @@ const Advertisement = () => {
   const { data: products = [] } = useQuery({
     queryKey: ["products"],
     queryFn: () =>
-      fetch("http://localhost:5000/advertisedproduct").then((res) =>
-        res.json()
-      ),
+      fetch("http://localhost:5000/advertisedproduct", {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }).then((res) => res.json()),
   });
   return (
     <div className="my-12 container mx-auto">

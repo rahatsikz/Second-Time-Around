@@ -7,9 +7,11 @@ const MyBuyers = () => {
   const { data: buyers = [] } = useQuery({
     queryKey: ["buyers"],
     queryFn: () =>
-      fetch(`http://localhost:5000/mybuyer?name=${user?.displayName}`).then(
-        (res) => res.json()
-      ),
+      fetch(`http://localhost:5000/mybuyer?name=${user?.displayName}`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }).then((res) => res.json()),
   });
   return (
     <div>

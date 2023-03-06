@@ -3,6 +3,7 @@ import DashLayout from "../layouts/DashLayout";
 import Main from "../layouts/Main";
 import Blogs from "../pages/Blogs/Blogs";
 import AddProduct from "../pages/Dashboard/AddProduct/AddProduct";
+import AllBuyer from "../pages/Dashboard/AllBuyer/AllBuyer";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import MyBuyers from "../pages/Dashboard/MyBuyers/MyBuyers";
 import MyOrders from "../pages/Dashboard/MyOrders/MyOrders";
@@ -100,6 +101,10 @@ export const router = createBrowserRouter([
             <MyBuyers></MyBuyers>
           </SellerRoute>
         ),
+      },
+      {
+        path: "/dashboard/allbuyer",
+        element: <AllBuyer></AllBuyer>,
       },
     ],
   },

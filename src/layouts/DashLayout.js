@@ -69,6 +69,16 @@ const DashLayout = () => {
                 </Link>
               </li>
             )}
+            {userrole.role === "Admin" && (
+              <li>
+                <Link
+                  to="/dashboard/allbuyer"
+                  className="text-lg font-semibold active:bg-teal-500"
+                >
+                  All Buyers
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

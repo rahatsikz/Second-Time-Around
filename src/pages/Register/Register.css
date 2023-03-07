@@ -1,5 +1,11 @@
-input:-webkit-autofill {
+/* input:-webkit-autofill {
   -webkit-background-clip: text;
+} */
+input:-webkit-autofill {
+  background-color: #ffffff !important;
+  color: #555 !important;
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #555555 !important;
 }
 .cus-border {
   border-bottom: 1px solid #d1d5db;

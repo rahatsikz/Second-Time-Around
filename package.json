@@ -17,8 +17,11 @@
     "imgbb-uploader": "^1.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-grid-carousel": "^1.0.1",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
+    "react-image-gallery": "^1.2.11",
+    "react-multi-carousel": "^2.8.2",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"

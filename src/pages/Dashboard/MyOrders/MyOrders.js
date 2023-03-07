@@ -9,11 +9,14 @@ const MyOrders = () => {
     queryKey: ["orders"],
 
     queryFn: () =>
-      fetch(`http://localhost:5000/orders?email=${user?.email}`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }).then((res) => res.json()),
+      fetch(
+        `https://second-time-around-server-rahatsikz.vercel.app/orders?email=${user?.email}`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      ).then((res) => res.json()),
   });
   return (
     <div>

@@ -32,9 +32,12 @@ const ProductCard = ({ product, refetch }) => {
   const handleReport = (id) => {
     // console.log(id);
     axios
-      .put(`http://localhost:5000/products/${id}`, {
-        reported: true,
-      })
+      .put(
+        `https://second-time-around-server-rahatsikz.vercel.app/products/${id}`,
+        {
+          reported: true,
+        }
+      )
       .then((response) => {
         console.log(response);
         toast.success("Reported to admin successfully");

@@ -44,11 +44,14 @@ const Login = () => {
         setLoginUserEmail(user.email);
 
         axios
-          .post("http://localhost:5000/users", {
-            name: user.displayName,
-            email: user.email,
-            role: "Buyer",
-          })
+          .post(
+            "https://second-time-around-server-rahatsikz.vercel.app/users",
+            {
+              name: user.displayName,
+              email: user.email,
+              role: "Buyer",
+            }
+          )
           .then(
             (response) => {
               console.log(response);

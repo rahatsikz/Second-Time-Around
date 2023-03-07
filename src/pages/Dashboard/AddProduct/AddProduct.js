@@ -11,9 +11,9 @@ const AddProduct = () => {
   const { data: userrole = [] } = useQuery({
     queryKey: ["userrole", user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/users?email=${user?.email}`).then((res) =>
-        res.json()
-      ),
+      fetch(
+        `https://second-time-around-server-rahatsikz.vercel.app/users?email=${user?.email}`
+      ).then((res) => res.json()),
   });
 
   // console.log(userrole);
@@ -70,9 +70,12 @@ const AddProduct = () => {
             contact: mobileNo,
           };
           axios
-            .post("http://localhost:5000/products/add", {
-              add,
-            })
+            .post(
+              "https://second-time-around-server-rahatsikz.vercel.app/products/add",
+              {
+                add,
+              }
+            )
             .then((response) => {
               console.log(response);
               toast.success("Product added successfully");

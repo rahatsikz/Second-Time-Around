@@ -6,11 +6,14 @@ const Advertisement = () => {
   const { data: products = [] } = useQuery({
     queryKey: ["products"],
     queryFn: () =>
-      fetch("http://localhost:5000/advertisedproduct", {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }).then((res) => res.json()),
+      fetch(
+        "https://second-time-around-server-rahatsikz.vercel.app/advertisedproduct",
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      ).then((res) => res.json()),
   });
 
   return (
@@ -26,7 +29,7 @@ const Advertisement = () => {
         <Carousel cols={1} rows={1} gap={10} autoplay={2500} loop>
           {products.map((product) => (
             <Carousel.Item>
-              <img className="w-1/3 mx-auto" src={product.picture} alt="" />
+              <img className="w-1/4 mx-auto" src={product.picture} alt="" />
               <h2 className="text-center text-2xl my-4 font-medium">
                 {product.name}
               </h2>

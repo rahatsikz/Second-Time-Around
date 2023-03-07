@@ -15,7 +15,9 @@ const Products = () => {
   } = useQuery({
     queryKey: ["categorizedProduct"],
     queryFn: () =>
-      fetch(`http://localhost:5000/products/${id}`).then((res) => res.json()),
+      fetch(
+        `https://second-time-around-server-rahatsikz.vercel.app/products/${id}`
+      ).then((res) => res.json()),
   });
 
   if (isLoading) {

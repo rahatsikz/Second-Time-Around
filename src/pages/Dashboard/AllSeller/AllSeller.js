@@ -7,13 +7,17 @@ const AllSeller = () => {
   const { data: sellers = [], refetch } = useQuery({
     queryKey: ["sellers"],
     queryFn: () =>
-      fetch("http://localhost:5000/sellers").then((res) => res.json()),
+      fetch(
+        "https://second-time-around-server-rahatsikz.vercel.app/sellers"
+      ).then((res) => res.json()),
   });
   const handleDelete = (name) => {
     const proceed = window.confirm("Do you want to delete this seller");
     if (proceed) {
       axios
-        .delete(`http://localhost:5000/sellers?name=${name}`)
+        .delete(
+          `https://second-time-around-server-rahatsikz.vercel.app/sellers?name=${name}`
+        )
         .then((response) => {
           console.log(response);
           toast.success("Deleted Successfully");
@@ -25,9 +29,12 @@ const AllSeller = () => {
 
   const handleVerify = (name) => {
     axios
-      .put(`http://localhost:5000/sellers?name=${name}`, {
-        verification: true,
-      })
+      .put(
+        `https://second-time-around-server-rahatsikz.vercel.app/sellers?name=${name}`,
+        {
+          verification: true,
+        }
+      )
       .then((response) => {
         console.log(response);
         refetch();

@@ -7,14 +7,18 @@ const AllBuyer = () => {
   const { data: buyers = [], refetch } = useQuery({
     queryKey: ["buyers"],
     queryFn: () =>
-      fetch("http://localhost:5000/buyers").then((res) => res.json()),
+      fetch(
+        "https://second-time-around-server-rahatsikz.vercel.app/buyers"
+      ).then((res) => res.json()),
   });
 
   const handleDelete = (id) => {
     const proceed = window.confirm("Do you want to delete this buyer");
     if (proceed) {
       axios
-        .delete(`http://localhost:5000/buyers/${id}`)
+        .delete(
+          `https://second-time-around-server-rahatsikz.vercel.app/buyers/${id}`
+        )
         .then((response) => {
           console.log(response);
           toast.success("Deleted Successfully");

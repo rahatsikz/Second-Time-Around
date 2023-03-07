@@ -7,14 +7,18 @@ const Reporteditems = () => {
   const { data: reported = [], refetch } = useQuery({
     queryKey: ["reported"],
     queryFn: () =>
-      fetch("http://localhost:5000/reportedproduct").then((res) => res.json()),
+      fetch(
+        "https://second-time-around-server-rahatsikz.vercel.app/reportedproduct"
+      ).then((res) => res.json()),
   });
 
   const handleDelete = (id) => {
     const proceed = window.confirm("Do you want to delete this reported item?");
     if (proceed) {
       axios
-        .delete(`http://localhost:5000/reportedproduct/${id}`)
+        .delete(
+          `https://second-time-around-server-rahatsikz.vercel.app/reportedproduct/${id}`
+        )
         .then((response) => {
           console.log(response);
           toast.success("Deleted Successfully");

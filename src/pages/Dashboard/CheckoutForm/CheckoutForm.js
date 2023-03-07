@@ -16,11 +16,14 @@ const CheckoutForm = ({ orderData }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ price }),
-    })
+    fetch(
+      "https://second-time-around-server-rahatsikz.vercel.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ price }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [price]);
@@ -87,7 +90,7 @@ const CheckoutForm = ({ orderData }) => {
         transaction: paymentIntent.id,
         orderID: _id,
       };
-      fetch("http://localhost:5000/payment", {
+      fetch("https://second-time-around-server-rahatsikz.vercel.app/payment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

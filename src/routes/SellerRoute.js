@@ -9,9 +9,9 @@ const SellerRoute = ({ children }) => {
   const { data: userrole = [] } = useQuery({
     queryKey: ["userrole", user?.email],
     queryFn: () =>
-      fetch(`http://localhost:5000/users?email=${user?.email}`).then((res) =>
-        res.json()
-      ),
+      fetch(
+        `https://second-time-around-server-rahatsikz.vercel.app/users?email=${user?.email}`
+      ).then((res) => res.json()),
   });
 
   if (user?.uid && userrole.role === "Seller") {

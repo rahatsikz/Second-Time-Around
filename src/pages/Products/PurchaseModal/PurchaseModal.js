@@ -18,7 +18,7 @@ const PurchaseModal = ({ items, handleClose, refetch }) => {
     // console.log(name, email, device, price, contact, meetingLocation);
 
     axios
-      .post("http://localhost:5000/orders", {
+      .post("https://second-time-around-server-rahatsikz.vercel.app/orders", {
         Seller,
         buyer,
         email,
@@ -40,7 +40,7 @@ const PurchaseModal = ({ items, handleClose, refetch }) => {
       );
 
     // axios
-    //   .put(`http://localhost:5000/productstate/?id=${_id}`, {
+    //   .put(`https://second-time-around-server-rahatsikz.vercel.app/productstate/?id=${_id}`, {
     //     purchaseStatus: true,
     //   })
     //   .then((response) => {

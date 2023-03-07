@@ -80,7 +80,9 @@ export const router = createBrowserRouter([
           </UserRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/orders/${params.id}`),
+          fetch(
+            `https://second-time-around-server-rahatsikz.vercel.app/orders/${params.id}`
+          ),
       },
       {
         path: "/dashboard/addproduct",

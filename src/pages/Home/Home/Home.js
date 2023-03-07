@@ -9,11 +9,14 @@ const Home = () => {
   const { data: product = [] } = useQuery({
     queryKey: ["product"],
     queryFn: () =>
-      fetch("http://localhost:5000/advertisedproduct", {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }).then((res) => res.json()),
+      fetch(
+        "https://second-time-around-server-rahatsikz.vercel.app/advertisedproduct",
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      ).then((res) => res.json()),
   });
   console.log(product);
   return (

@@ -39,11 +39,14 @@ const Register = () => {
         profileInfo(profile)
           .then(() => {
             axios
-              .post("http://localhost:5000/users", {
-                name: fullName,
-                email: email,
-                role: role,
-              })
+              .post(
+                "https://second-time-around-server-rahatsikz.vercel.app/users",
+                {
+                  name: fullName,
+                  email: email,
+                  role: role,
+                }
+              )
               .then(
                 (response) => {
                   console.log(response);

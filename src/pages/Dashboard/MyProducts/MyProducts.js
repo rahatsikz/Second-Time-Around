@@ -9,16 +9,19 @@ const MyProducts = () => {
   const { data: product = [], refetch } = useQuery({
     queryKey: ["product"],
     queryFn: () =>
-      fetch(`http://localhost:5000/products?name=${user?.displayName}`).then(
-        (res) => res.json()
-      ),
+      fetch(
+        `https://second-time-around-server-rahatsikz.vercel.app/products?name=${user?.displayName}`
+      ).then((res) => res.json()),
   });
   const handleDelete = (id) => {
     const proceed = window.confirm("Do you want to delete it?");
     if (proceed) {
-      fetch(`http://localhost:5000/products/${id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://second-time-around-server-rahatsikz.vercel.app/products/${id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -30,9 +33,12 @@ const MyProducts = () => {
   const handleAdvertise = (id) => {
     // console.log(id);
     axios
-      .put(`http://localhost:5000/products/${id}`, {
-        advertised: true,
-      })
+      .put(
+        `https://second-time-around-server-rahatsikz.vercel.app/products/${id}`,
+        {
+          advertised: true,
+        }
+      )
       .then((response) => {
         console.log(response);
         refetch();

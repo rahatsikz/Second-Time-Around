@@ -33,7 +33,7 @@ const ProductCard = ({ product, refetch }) => {
     // console.log(id);
     axios
       .put(
-        `https://second-time-around-server-rahatsikz.vercel.app/products/${id}`,
+        `https://second-time-around-server-rahatsikz.vercel.app/reports/${id}`,
         {
           reported: true,
         }

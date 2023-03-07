@@ -28,7 +28,7 @@ const Advertisement = () => {
       <div className="mt-8">
         <Carousel cols={1} rows={1} gap={10} autoplay={2500} loop>
           {products.map((product) => (
-            <Carousel.Item>
+            <Carousel.Item key={product._id}>
               <img className="w-1/4 mx-auto" src={product.picture} alt="" />
               <h2 className="text-center text-2xl my-4 font-medium">
                 {product.name}

@@ -18,13 +18,13 @@ const Navbar = () => {
         <div className="relative mx-auto px-6 container">
           <nav
             aria-label="main navigation"
-            className="flex h-[5.5rem] items-stretch justify-between font-medium text-slate-700"
+            className="flex h-[11.5rem] md:h-[5.5rem] w-full items-stretch md:justify-between justify-center font-medium text-slate-700 flex-col md:flex-row"
             role="navigation"
           >
             {/*      <!-- Brand logo --> */}
             <Link
               aria-current="page"
-              className="flex items-center gap-2 whitespace-nowrap py-3 text-lg focus:outline-none lg:flex-1"
+              className="flex items-center md:justify-start justify-center gap-2 whitespace-nowrap py-3 text-lg focus:outline-none lg:flex-1"
               to="/"
             >
               <svg
@@ -45,7 +45,7 @@ const Navbar = () => {
               </svg>
             </Link>
             {/*      <!-- Mobile trigger --> */}
-            <div className="flex items-center">
+            <div className="flex items-center md:justify-start justify-center">
               <button
                 className={`relative order-10 block h-10 w-10 self-center lg:hidden
                 ${
@@ -84,7 +84,7 @@ const Navbar = () => {
             <ul
               role="menubar"
               aria-label="Select page"
-              className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
+              className={`absolute top-[85px] left-0 z-[-1] h-[24.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${
                 isToggleOpen
                   ? "visible opacity-100 backdrop-blur-sm"
                   : "invisible opacity-0"
